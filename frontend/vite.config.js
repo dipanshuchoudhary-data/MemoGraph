@@ -11,10 +11,13 @@ export default defineConfig({
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'markdown-vendor': ['react-markdown', 'remark-gfm'],
-          'icons-vendor': ['lucide-react'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react')) return 'react-vendor'
+            if (id.includes('react-markdown') || id.includes('remark-gfm')) return 'markdown-vendor'
+            if (id.includes('lucide-react')) return 'icons-vendor'
+            return 'vendor'
+          }
         }
       }
     }
