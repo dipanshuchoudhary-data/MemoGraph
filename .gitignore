@@ -1,14 +1,98 @@
+# Environment Variables - Never commit!
 .env
+.env.local
+.env.*.local
+.env.production
+
+# Python / Backend
 .venv/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .python-version
-
 .mypy_cache/
 .pytest_cache/
 .ruff_cache/
+*.egg-info/
+dist/
+build/
 
+# Node / Frontend
+node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# OS
 .DS_Store
 Thumbs.db
+.AppleDouble
+.LSOverride
+*.cab
+.TemporaryItems
+.Trashes
+ehthumbs.db
+desktop.ini
+
+# Logs
+logs/
+*.log
+lerna-debug.log*
+
+# Netlify
+.netlify/
+netlify.dev.log
+
+# Dependencies
+/node_modules
+/frontend/node_modules
+
+# Build outputs
+/dist
+/frontend/dist
+/build
+
+# Misc
+.cache
+.parcel-cache
+.next
+.nuxt
+.cache/
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+.vuepress
+dist
+.cache/
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Backup files
+*.bak
+*.tmp
+*.backup
+*~
