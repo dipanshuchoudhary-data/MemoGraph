@@ -7,7 +7,6 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser',
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
