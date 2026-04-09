@@ -2,10 +2,10 @@
 
 [build]
   # Build command
-  command = "cd frontend && npm install && npm run build"
+  command = "npm install && npm run build"
   
   # Publish directory (where your build output goes)
-  publish = "frontend/dist"
+  publish = "dist"
   
   # Node version
   node_version = "18"
