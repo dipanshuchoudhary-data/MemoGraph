@@ -1,0 +1,18 @@
+{
+  "build": {
+    "functions": "netlify/functions",
+    "command": "cd frontend && npm run build",
+    "publish": "frontend/dist"
+  },
+  "dev": {
+    "command": "cd frontend && npm run dev",
+    "port": 3000
+  },
+  "env": {
+    "VITE_API_URL": {
+      "description": "Backend API URL for MemoGraph",
+      "required": false,
+      "example": "https://memograph-production.up.railway.app"
+    }
+  }
+}

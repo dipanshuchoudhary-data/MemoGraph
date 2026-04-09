@@ -7,12 +7,10 @@
   # Publish directory (where your build output goes)
   publish = "dist"
   
-  # Node version
-  node_version = "18"
-
 # Environment variables
 [build.environment]
-  VITE_API_URL = "https://memograph-api.netlify.app"
+  NODE_VERSION = "22"
+  VITE_API_URL = "https://memograph-production.up.railway.app"
 
 # Redirect all non-file requests to index.html for SPA routing
 [[redirects]]
