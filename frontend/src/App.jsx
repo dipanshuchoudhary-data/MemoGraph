@@ -3,6 +3,21 @@ import { Search, Loader2, BookOpen, GitBranch, RefreshCw, ChevronRight, FileCode
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
+const PRODUCTION_API_URL = 'https://memograph-production.up.railway.app';
+
+function getApiUrl() {
+  const configuredUrl = import.meta.env.VITE_API_URL?.trim();
+
+  if (configuredUrl) {
+    return configuredUrl.replace(/\/$/, '');
+  }
+
+  const hostname = window.location.hostname;
+  const isLocalHost = hostname === 'localhost' || hostname === '127.0.0.1';
+
+  return isLocalHost ? 'http://localhost:8000' : PRODUCTION_API_URL;
+}
+
 function App() {
   const [query, setQuery] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +36,7 @@ function App() {
     setResponse(null);
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      const apiUrl = getApiUrl();
       const res = await fetch(`${apiUrl}/chat`, {
         method: 'POST',
         headers: {

@@ -16,9 +16,34 @@ from memograph.graph import MemoGraphApp
 load_dotenv()
 
 
+DEFAULT_LOCAL_ORIGINS = {
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+}
+
+
+def _normalize_origin(origin: str | None) -> str | None:
+    if not origin:
+        return None
+    cleaned = origin.strip().rstrip("/")
+    return cleaned or None
+
+
 def _allowed_origins() -> list[str]:
-    raw = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173")
-    return [origin.strip() for origin in raw.split(",") if origin.strip()]
+    origins: set[str] = set(DEFAULT_LOCAL_ORIGINS)
+
+    raw = os.getenv("CORS_ORIGINS", "")
+    for origin in raw.split(","):
+        normalized = _normalize_origin(origin)
+        if normalized:
+            origins.add(normalized)
+
+    for env_name in ("FRONTEND_URL", "PUBLIC_FRONTEND_URL", "URL", "DEPLOY_PRIME_URL"):
+        normalized = _normalize_origin(os.getenv(env_name))
+        if normalized:
+            origins.add(normalized)
+
+    return sorted(origins)
 
 
 @asynccontextmanager
