@@ -150,19 +150,3 @@ Run a topic twice with increasing depth:
 ```bash
 python -m memograph.cli "Graph neural networks for recommendation systems"
 python -m memograph.cli "Advanced graph neural networks for recommendation systems in production"
-```
-
-Expected behavior:
-
-- Existing topic file is **extended** (not blindly replaced)
-- Related-topic links are refreshed
-- `knowledge/index.md` stays updated
-
----
-
-## ✅ Why this README is beginner-friendly
-
-- Clear “what it is / what it is not” explanation
-- Copy-paste-ready commands
-- API + CLI + frontend usage in one place
-- Visual sections, tables, badges, and clean formatting
